@@ -3,9 +3,9 @@ dotfiles
 
 Contains all my Linux configuration.
 
-# Setup
+### Setup
 
-> I use [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
+I use [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 
-curl -L http://install.ohmyz.sh | sh
+> curl -L http://install.ohmyz.sh | sh
 
