@@ -8,7 +8,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/$USER/bin"
 
 # Prefered language
 export LANG=en_US.UTF-8
@@ -54,3 +54,5 @@ alias pull='git pull'
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
