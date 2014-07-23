@@ -1,17 +1,16 @@
-export ZSH=$HOME/.oh-my-zsh
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
 
-ZSH_THEME="ys"
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
 
-plugins=(git tmux)
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/$USER/bin"
-
-# Prefered language
-export LANG=en_US.UTF-8
+# Customize to your needs...
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/id_rsa"
@@ -49,6 +48,12 @@ alias pdw='pwd'
 # git shortcuts
 alias push='git push origin master'
 alias pull='git pull'
+
+# tmux
+alias tma='tmux attach -d -t'
+alias tmn='tmux new -s $(basename $(pwd))'
+alias tml='tmux list-sessions'
+
 
 # Virtualenvwrapper settings
 export WORKON_HOME=$HOME/.virtualenvs
