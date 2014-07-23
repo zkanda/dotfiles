@@ -1,0 +1,11 @@
+[user]
+	email = zakatellkanda@gmail.com
+	name = zkanda
+[push]
+	default = simple
+[core]
+	editor = vim
+[color]
+ 	ui = true
+[merge]
+	summary = true
