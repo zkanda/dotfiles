@@ -18,7 +18,7 @@ fi
 #
 
 export EDITOR='vim'
-export VISUAL='gvim'
+export VISUAL='vim'
 export PAGER='less'
 
 #
@@ -75,3 +75,8 @@ if [[ ! -d "$TMPPREFIX" ]]; then
   mkdir -p "$TMPPREFIX"
 fi
 
+#
+# VirtualEnvWrapper
+#
+
+VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
