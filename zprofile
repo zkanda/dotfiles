@@ -76,6 +76,12 @@ if [[ ! -d "$TMPPREFIX" ]]; then
 fi
 
 #
+# Terminal vi mode
+#
+
+export KEYTIMEOUT=1
+
+#
 # VirtualEnvWrapper
 #
 
