@@ -41,6 +41,7 @@ alias df='df -h'
 alias du='du -h'
 alias mkdir='mkdir -p'
 alias p="cd ~/projects"
+alias gh="cd ~/code/github.com"
  
 # can be used to fix common typos you make
 alias pdw='pwd'
