@@ -21,6 +21,6 @@ ln -sf $GH_HOME/dotfiles/zshrc $HOME/.zshrc
 
 ln -sf $GH_HOME/dotfiles/gitconfig $HOME/.gitconfig
 ln -sf $GH_HOME/dotfiles/tmux.conf $HOME/.tmux.conf
-ln -sf $GH_HOME/dotfiles/vimrc $HOME/.zvimrc
+ln -sf $GH_HOME/dotfiles/vimrc $HOME/.vimrc
 ln -sf $GH_HOME/dotfiles/gemrc $HOME/.gemrc
 ```
