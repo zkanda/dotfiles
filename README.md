@@ -1,7 +1,7 @@
 dotfiles
 ========
 
-Contains all my Linux configuration.
+Contains all my UNIX configuration.
 
 ### Setup
 
