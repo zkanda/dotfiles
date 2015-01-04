@@ -4,13 +4,15 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
 Plugin 'altercation/vim-colors-solarized'
+
+" Programming Language support
+Plugin 'wting/rust.vim'
 
 
 " All of your Plugins must be added before the following line
@@ -41,7 +43,7 @@ set number
 set showmatch
 set smartcase
 set smartindent
-set ts=4 sts=4 sw=4 expandtab
+set ts=2 sts=2 sw=2 expandtab
 set visualbell
 set winheight=999
 set winheight=5
@@ -52,3 +54,6 @@ set winwidth=84
 syntax enable
 set background=dark
 colorscheme solarized
+if has("gui_running")
+  set transparency=15
+endif
