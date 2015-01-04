@@ -1,7 +1,7 @@
 dotfiles
 ========
 
-Contains all my Linux configuration.
+Contains all my UNIX configuration.
 
 ### Setup
 
@@ -11,10 +11,16 @@ Installation:
 
 ```bash
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-ln -s ~/.zprezto/runcoms/zlogin ~/.zlogin
-ln -s ~/.zprezto/runcoms/zlogout ~/.zlogout
-ln -s ~/.zprezto/runcoms/zpreztorc ~/.zpreztorc
-ln -s ~/.zprezto/runcoms/zprofile ~/.zprofile
-ln -s ~/.zprezto/runcoms/zshenv ~/.zshenv
-ln -s ~/.zprezto/runcoms/zshrc ~/.zshrc
+GH_HOME=$HOME/code/github.com
+ln -sf $GH_HOME/dotfiles/zlogin $HOME/.zlogin
+ln -sf $GH_HOME/dotfiles/zlogout $HOME/.zlogout
+ln -sf $GH_HOME/dotfiles/zpreztorc $HOME/.zpreztorc
+ln -sf $GH_HOME/dotfiles/zprofile $HOME/.zprofile
+ln -sf $GH_HOME/dotfiles/zshenv $HOME/.zshenv
+ln -sf $GH_HOME/dotfiles/zshrc $HOME/.zshrc
+
+ln -sf $GH_HOME/dotfiles/gitconfig $HOME/.gitconfig
+ln -sf $GH_HOME/dotfiles/tmux.conf $HOME/.tmux.conf
+ln -sf $GH_HOME/dotfiles/vimrc $HOME/.vimrc
+ln -sf $GH_HOME/dotfiles/gemrc $HOME/.gemrc
 ```
