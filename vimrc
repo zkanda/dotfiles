@@ -1,3 +1,6 @@
+" Reload .vimrc when saving
+autocmd! bufwritepost .vimrc source %
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -7,12 +10,29 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
+Plugin 'bling/vim-airline'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 
-" Programming Language support
+""" Programming Language support
+
+" Python
+Plugin 'klen/python-mode'
+
+" Rust
 Plugin 'wting/rust.vim'
+
+""" Application specific
+
+" Docker
+Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
+
+" Nginx
+Plugin 'nginx/nginx' , {'rtp': '/contrib/vim/'}
+
 
 
 " All of your Plugins must be added before the following line
@@ -49,11 +69,37 @@ set winheight=999
 set winheight=5
 set winminheight=5
 set winwidth=84
+
+" Copy and paste
+set pastetoggle=<F2>
+set clipboard=unnamed
+
 " }}}
 
+
+" Easier moving between tabs
+map <Leader>n <esc>:tabprevious<CR>
+map <Leader>m <esc>:tabnext<CR>"
+
+
+" Map sort function to a key
+vnoremap <Leader>s :sort<CR>"
+
+
+" Easier moving of code blocks
+vnoremap < <gv " better indentation
+vnoremap > >gv " better indentation
+
+
+" Auto delete whitespace on write
+autocmd BufWritePre * :%s/\s\+$//e
+
+
+" Beautify my editor
 syntax enable
 set background=dark
 colorscheme solarized
 if has("gui_running")
-  set transparency=15
+  set transparency=5
 endif
+
