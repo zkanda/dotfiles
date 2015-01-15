@@ -41,3 +41,7 @@ __MACOSX
 .powder
 *.sublime-project
 *.sublime-workspace
+.idea/
+.vagrant/
+
+target/
