@@ -23,4 +23,5 @@ ln -sf $GH_HOME/dotfiles/gitconfig $HOME/.gitconfig
 ln -sf $GH_HOME/dotfiles/tmux.conf $HOME/.tmux.conf
 ln -sf $GH_HOME/dotfiles/vimrc $HOME/.vimrc
 ln -sf $GH_HOME/dotfiles/gemrc $HOME/.gemrc
+ln -sf $GH_HOME/dotfiles/gitignore_global $HOME/.gitignore_global
 ```
