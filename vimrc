@@ -16,6 +16,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-commentary'
 
 """ Programming Language support
 
@@ -24,14 +25,6 @@ Plugin 'klen/python-mode'
 
 " Rust
 Plugin 'wting/rust.vim'
-
-""" Application specific
-
-" Docker
-Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
-
-" Nginx
-Plugin 'nginx/nginx' , {'rtp': '/contrib/vim/'}
 
 
 
@@ -43,6 +36,7 @@ filetype plugin indent on    " required
 let mapleader = ","
 
 " General settings {{{
+set lines=40 columns=140
 set autoindent
 set backspace=indent,eol,start
 set colorcolumn=80
