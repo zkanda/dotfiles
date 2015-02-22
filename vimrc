@@ -22,6 +22,7 @@ Plugin 'tpope/vim-commentary'
 
 " Python
 Plugin 'klen/python-mode'
+Plugin 'derekwyatt/vim-scala'
 
 " Rust
 Plugin 'wting/rust.vim'
@@ -36,7 +37,6 @@ filetype plugin indent on    " required
 let mapleader = ","
 
 " General settings {{{
-set lines=40 columns=140
 set autoindent
 set backspace=indent,eol,start
 set colorcolumn=80
@@ -44,9 +44,6 @@ set cursorline
 set encoding=utf-8
 set fileencoding=utf-8
 set gdefault
-set guifont=Monaco:h11
-set guioptions-=Be
-set guioptions=aAc
 set hlsearch
 set ignorecase
 set incsearch
@@ -95,5 +92,8 @@ set background=dark
 colorscheme solarized
 if has("gui_running")
   set transparency=5
+  set guifont=Fira\ Mono\ for\ Powerline:h12
+  set guioptions-=Be
+  set guioptions=aAc
+  set lines=999 columns=999
 endif
-
