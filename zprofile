@@ -80,9 +80,3 @@ fi
 #
 
 export KEYTIMEOUT=1
-
-#
-# VirtualEnvWrapper
-#
-
-VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3

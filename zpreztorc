@@ -34,11 +34,10 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'prompt' \
   'git' \
-  'python' \
-  'ruby' \
-  'node' \
   'syntax-highlighting' \
-  'tmux'
+  'tmux' \
+  'homebrew'
+
 
 #
 # Editor
@@ -158,7 +157,4 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 
 # Auto start a session when Zsh is launched in a SSH connection.
 # zstyle ':prezto:module:tmux:auto-start' remote 'yes'
-
-
-zstyle ':prezto:module:python:info:virtualenv' format 'virtualenv:%v'
 
