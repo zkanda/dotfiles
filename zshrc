@@ -71,3 +71,10 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
+
+LANGUAGE=en_US:en
+LC_CTYPE=en_US.UTF-8
+LC_ALL=en_US.UTF-8
+
+#Google Cloud
+source '/Users/zkanda/google-cloud-sdk/path.zsh.inc'

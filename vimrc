@@ -30,9 +30,12 @@ Plug 'chriskempson/base16-vim'
 " Plug 'derekwyatt/vim-scala'
 " Plug 'chase/Vim-Jinja2-Syntax'
 
+" Ansible
+Plug 'chase/vim-ansible-yaml'
+
 " Rust
 Plug 'rust-lang/rust.vim'
-Plug 'phildawes/racer'
+" Plug 'phildawes/racer'
 
 " Go
 Plug 'fatih/vim-go'
@@ -54,7 +57,6 @@ let mapleader = ","
 " General settings {{{
 set autoindent
 set backspace=indent,eol,start
-set colorcolumn=120
 set cursorline
 set encoding=utf-8
 set fileencoding=utf-8
@@ -76,6 +78,11 @@ set winheight=5
 set winminheight=5
 set winwidth=84
 set wildmenu
+
+" Need for old version of vim
+if version >= 703
+  set colorcolumn=120
+endif
 
 " Copy and paste
 set pastetoggle=<F2>
@@ -105,6 +112,14 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " Beautify my editor
 syntax on
+
+if has("gui_running")
+  " set transparency=5
+  set guifont=Consolas:h14
+  set guioptions-=Be
+  set guioptions=aAc
+  set lines=999 columns=999
+
 set background=light
 " colorscheme solarized
 " colorscheme github
@@ -113,13 +128,6 @@ colorscheme base16-default
 
 " let &colorcolumn="80,".join(range(120,500),",")
 highlight ColorColumn ctermbg=235 guibg=#EBF1F9
-
-if has("gui_running")
-  " set transparency=5
-  set guifont=Consolas:h12
-  set guioptions-=Be
-  set guioptions=aAc
-  set lines=999 columns=999
 endif
 
 "This unsets the "last search pattern" register by hitting return
