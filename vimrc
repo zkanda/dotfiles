@@ -168,6 +168,6 @@ map <F2> :NERDTreeToggle<CR>
 
 
 let custom = $HOME."/.vimrcustom"
-execute "source" . custom
-" if filereadable(custom)
-" endif
+if filereadable(custom)
+    execute "source" . custom
+endif
