@@ -7,6 +7,7 @@ call plug#begin()
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-commentary'
@@ -165,6 +166,9 @@ let loaded_netrwPlug = 1
 " NerdTree Settings
 let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
 map <F2> :NERDTreeToggle<CR>
+
+" Session settings
+let g:session_autosave = 'no'
 
 
 let custom = $HOME."/.vimrcustom"
