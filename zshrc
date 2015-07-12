@@ -56,11 +56,22 @@ alias tma='tmux attach -d -t'
 alias tmn='tmux new -s $(basename $(pwd))'
 alias tml='tmux list-sessions'
 
+# Detect what is my platform
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux'  ]]; then
+    platform='linux'
+elif [[ "$unamestr" == 'Darwin'  ]]; then
+    platform='darwin'
+fi
 
 # Virtualenvwrapper settings
 export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
-
+if [[ $platform == 'linux' ]]; then
+    source /usr/bin/virtualenvwrapper.sh
+elif [[ $platform == 'darwin' ]]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -72,6 +83,7 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 
+# Language Settings
 LANGUAGE=en_US:en
 LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
