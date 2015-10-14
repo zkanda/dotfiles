@@ -1,5 +1,12 @@
 " Reload .nvimrc when saving
 autocmd! bufwritepost .vimrc source %
+" Autoinstall vim-plug {{{
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall
+endif
+" }}}
 call plug#begin('~/.vim/plugged')
 
 " Group dependencies, vim-snippets depends on ultisnips
