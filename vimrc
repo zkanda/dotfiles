@@ -19,7 +19,11 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
 Plug 'junegunn/goyo.vim'
+Plug 'scrooloose/syntastic'
+
+" Color Scheme
 Plug 'altercation/vim-colors-solarized'
+Plug 'gilgigilgil/anderson.vim'
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -70,7 +74,7 @@ let g:ctrlp_custom_ignore = {
 
 " Airline Settings
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'solarized'
+let g:airline_theme = 'bubblegum'
 
 " Smart way to move between windows
 map <C-h> <C-W>h
@@ -80,7 +84,7 @@ map <C-l> <C-W>l
 
 " Set colorscheme
 set background=light
-colorscheme solarized
+colorscheme anderson
 
 " Remove backups
 set noswapfile
