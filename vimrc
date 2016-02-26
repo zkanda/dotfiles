@@ -74,7 +74,6 @@ let g:ctrlp_custom_ignore = {
 
 " Airline Settings
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'bubblegum'
 
 " Smart way to move between windows
 map <C-h> <C-W>h
