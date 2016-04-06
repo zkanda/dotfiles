@@ -1,7 +1,7 @@
 [user]
-	email = zakatellkanda@gmail.com
+	email = hi@zkanda.io
 	name = zkanda
-  signingkey= 973BBB17
+	signingkey = A9429161
 [push]
 	default = simple
 [core]
@@ -11,3 +11,5 @@
 	ui = auto
 [merge]
 	summary = true
+[commit]
+	gpgsign = true
