@@ -13,3 +13,5 @@
 	summary = true
 [commit]
 	gpgsign = true
+[alias]
+	uncommit = reset HEAD^
