@@ -51,3 +51,6 @@ target/
 
 *.ipynb
 .ipynb_checkpoints
+.ccache
+.ipython
+.picloud
