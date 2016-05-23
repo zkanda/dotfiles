@@ -1,99 +1,56 @@
 " Reload .nvimrc when saving
 autocmd! bufwritepost .vimrc source %
-" Autoinstall vim-plug {{{
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall
-endif
-" }}}
-call plug#begin('~/.vim/plugged')
 
-" Group dependencies, vim-snippets depends on ultisnips
+call plug#begin()
 Plug 'tpope/vim-sensible'
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
-Plug 'airblade/vim-gitgutter'
-Plug 'bling/vim-airline'
 Plug 'junegunn/goyo.vim'
-Plug 'scrooloose/syntastic'
 
-" Color Scheme
+
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+" Theme
 Plug 'altercation/vim-colors-solarized'
-Plug 'gilgigilgil/anderson.vim'
 
-" On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-
-" Python Language
-Plug 'davidhalter/jedi-vim'
-Plug 'nvie/vim-flake8'
+" Golang
+Plug 'fatih/vim-go'
 
 call plug#end()
 
-"Leader is set to ,
-let mapleader = ","
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+" http://stackoverflow.com/a/7078429
+cmap w!! w !sudo tee > /dev/null %
 
-" General Settings
-set nu
-set ts=4 sts=4 sw=4 expandtab
-set autoread
-
-
-" Open panes on right and below
-set splitright
-set splitbelow
-
-" Shorcut to rapidly toggle `set list`
-nmap <leader>l :set list!<CR>
-
-" Invisibles
-set listchars=tab:▸\ ,eol:¬
-
-
-" Mappings for buffers
-nnoremap <silent> [b :bprevious<CR>
-nnoremap <silent> ]b :bnext<CR>
-nnoremap <silent> [B :bfirst<CR>
-nnoremap <silent> ]B :blast<CR>
-
-" Easier moving between tabs
-map <Leader>, <esc>:tabprevious<CR>
-map <Leader>. <esc>:tabnext<CR>"
-
-" CtrlP Settings
-set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__,target
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ }
-
-
-" Airline Settings
-let g:airline#extensions#tabline#enabled = 1
-
-" Smart way to move between windows
-map <C-h> <C-W>h
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-l> <C-W>l
-
-" Set colorscheme
-set background=light
-colorscheme anderson
-
-" Remove backups
-set noswapfile
+set number
 set nobackup
-set nowb
+set nowritebackup
+set noswapfile
+set ts=2 sts=2 sw=2 expandtab
 
-" let g:jedi#force_py_version = 3
 
-" Clear last search highlighting
-nnoremap <silent> <CR> :nohlsearch<CR>
+" Ctrl-p: Find all git files in directory using FZF
+nmap <c-p> :GitFiles<CR>
+
+if has ('unnamedplus')
+  set clipboard=unnamedplus
+else
+  set clipboard=unnamed
+endif
+
+" syntax enable
+set background=light
+colorscheme solarized
+
+
+" Golang
+au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+
 
 " Goyo
 nnoremap <silent> <leader>z :Goyo<cr>
