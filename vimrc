@@ -3,6 +3,7 @@ autocmd! bufwritepost .vimrc nested source %
 
 call plug#begin()
 Plug 'tpope/vim-sensible'
+Plug 'mhinz/vim-startify'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
