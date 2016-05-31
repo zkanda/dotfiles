@@ -1,5 +1,5 @@
-" Reload .nvimrc when saving
-autocmd! bufwritepost .vimrc source %
+" Reload .vimrc when saving
+autocmd! bufwritepost .vimrc nested source %
 
 call plug#begin()
 Plug 'tpope/vim-sensible'
