@@ -3,7 +3,7 @@
 	name = zkanda
 	signingkey = A9429161
 [push]
-	default = simple
+	default = current
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore_global

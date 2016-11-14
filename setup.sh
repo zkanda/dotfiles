@@ -12,3 +12,6 @@ ln -sf $GH_HOME/dotfiles/tmux.conf $HOME/.tmux.conf
 # Vim
 ln -sf $GH_HOME/dotfiles/vimrc $HOME/.vimrc
 
+
+ln -sf $GH_HOME/dotfiles/inputrc $HOME/.inputrc
+

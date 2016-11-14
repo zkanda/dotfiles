@@ -91,8 +91,7 @@ set splitright
 nmap <c-p> :GitFiles<CR>
 
 " syntax enable
-set background=light
-" colorscheme Tomorrow-Night-Eighties
+set background=dark
 colorscheme solarized
 
 " Golang
