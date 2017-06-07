@@ -20,20 +20,21 @@ endif
 
 call plug#begin()
 
-Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'haya14busa/incsearch.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'jlanzarotta/bufexplorer'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 
 Plug 'fatih/vim-go'
+Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 
-Plug 'hashivim/vim-terraform'
+Plug 'hashivim/vim-hashicorp-tools'
 
 
 " THEMES
@@ -130,3 +131,24 @@ autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
+
+" Incsearch
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+
+" incsearch
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+
+" hashivim
+let g:terraform_align=1
+autocmd FileType terraform setlocal commentstring=#%s
+
