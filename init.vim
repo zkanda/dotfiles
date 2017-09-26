@@ -26,13 +26,26 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'haya14busa/incsearch.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'jlanzarotta/bufexplorer'
+Plug 'scrooloose/nerdtree'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'w0rp/ale'
+Plug 'sbdchd/neoformat'
+Plug 'junegunn/vim-peekaboo'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
+" Python
+Plug 'zchee/deoplete-jedi'
+
+" Go
 Plug 'fatih/vim-go'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 
+" Markdown
+Plug 'plasticboy/vim-markdown'
 
 Plug 'hashivim/vim-hashicorp-tools'
 
@@ -41,13 +54,19 @@ Plug 'hashivim/vim-hashicorp-tools'
 Plug 'lifepillar/vim-solarized8'
 Plug 'rakr/vim-one'
 Plug 'tlhr/anderson.vim'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
 
 set noswapfile
 set number
+set relativenumber
 set showcmd
+set ts=4 sts=4 sw=4 expandtab
+
+autocmd InsertEnter * :set norelativenumber
+autocmd InsertLeave * :set relativenumber 
 
 let mapleader=","
 
@@ -89,15 +108,16 @@ set splitbelow
 set splitright
 
 " TRUE COLORS
-if (has("termguicolors"))
-  set termguicolors
-endif
+set termguicolors
 
 " COLORSCHEME
-" colorscheme solarized8_dark_flat
+" colorscheme solarized8_light_flat
 " colorscheme one
-colorscheme anderson
-set background=dark
+" colorscheme anderson
+colorscheme gruvbox
+set background=light
+" let g:gruvbox_contrast_dark="medium"
+let g:gruvbox_contrast_light="medium"
 
 " When calling make, autosave my file
 set autowrite
@@ -110,9 +130,14 @@ nnoremap <leader>a :cclose<CR>
 " Disable preview
 set completeopt-=preview
 
+" Markdown
+au BufNewFile,BufRead *.md setlocal noet ts=4 sw=4 sts=4
+
 " Golang
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
+au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+let g:go_fmt_command = "goimports"
 
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
@@ -152,3 +177,9 @@ map g# <Plug>(incsearch-nohl-g#)
 let g:terraform_align=1
 autocmd FileType terraform setlocal commentstring=#%s
 
+" Nerdtree
+map <C-k><C-b> :NERDTreeToggle<CR>
+
+
+" Ctrl-p: Find all git files in directory using FZF
+nmap <c-p> :Files<CR>

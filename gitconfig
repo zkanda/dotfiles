@@ -5,13 +5,11 @@
 [push]
 	default = current
 [core]
-	editor = vim
+	editor = nvim
 	excludesfile = ~/.gitignore_global
 [color]
 	ui = auto
 [merge]
 	summary = true
-[commit]
-	gpgsign = true
 [alias]
 	uncommit = reset HEAD^

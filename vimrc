@@ -2,7 +2,7 @@
 autocmd! bufwritepost .vimrc nested source %
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
@@ -10,7 +10,6 @@ let remote=$REMOTE
 
 call plug#begin()
 Plug 'tpope/vim-sensible'
-Plug 'mhinz/vim-startify'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
@@ -19,21 +18,23 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 Plug 'Shougo/neocomplete.vim'
 
 Plug 'jlanzarotta/bufexplorer'
 
 Plug 'haya14busa/incsearch.vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'Chiel92/vim-autoformat'
+Plug 'xuhdev/SingleCompile'
 
 
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
 Plug 'hashivim/vim-terraform'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 
 " Auto switch paste mode
 Plug 'ConradIrwin/vim-bracketed-paste'
@@ -46,6 +47,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'tomasr/molokai'
+Plug 'morhetz/gruvbox'
 
 Plug 'sheerun/vim-polyglot'
 
@@ -55,6 +57,10 @@ Plug 'fatih/vim-go'
 " Python
 Plug 'fisadev/vim-isort'
 Plug 'tmhedberg/SimpylFold'
+
+" Rust
+Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
 
 " Javascript
 " Plug 'pangloss/vim-javascript'
@@ -86,29 +92,49 @@ set colorcolumn=120
 set splitbelow
 set splitright
 
+" set termguicolors
+
 
 " Ctrl-p: Find all git files in directory using FZF
 nmap <c-p> :GitFiles<CR>
 
 " syntax enable
-set background=dark
-colorscheme solarized
+set background=light
+" colorscheme solarized
+" colorscheme anderson
+colorscheme gruvbox
+" let g:gruvbox_contrast_light="medium"
+
+
+" Autoformat
+fun! AutoformatExcept()
+  " Don't strip on these filetypes
+  " if &ft =~ 'markdown\|ansible\|ruby\|javascript\|perl'
+  if &ft =~ 'python'
+    :Autoformat
+  endif
+  return
+endfun
+
+au BufWrite * call AutoformatExcept()
+
 
 " Golang
 au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+let g:go_fmt_command = "goimports"
 
 " Python
-au BufNewFile,BufRead *.py setlocal et ts=4 sw=4 sts=4
-" ab ip import ipdb; ipdb.set_trace()
+au BufNewFile,BufRead *.py setlocal et ts=4 sw=4 sts=4 " ab ip import ipdb; ipdb.set_trace()
 let g:PyFlakeOnWrite = 1
+let g:formatter_yapf_style = 'pep8'
 
 " Javascript
 let g:javascript_enable_domhtmlcss = 1
 
 " Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -140,13 +166,20 @@ if has("gui_running")
   highlight ColorColumn ctermbg=235 guibg=#EBF1F9
 endif
 
+" Rust
+let g:rustfmt_autosave = 1
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
 " YCM
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
 " let g:airline_theme = 'distinguished'
-let g:airline_theme = 'solarized'
+" let g:airline_theme = 'solarized'
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<c-l>"
@@ -166,3 +199,10 @@ map g/ <Plug>(incsearch-stay)
 
 " neocomplete
 let g:neocomplete#enable_at_startup = 1
+
+
+autocmd CompleteDone * pclose
+
+" SingleCompile
+nmap <F9> :SCCompile<cr>
+nmap <F10> :SCCompileRun<cr>
