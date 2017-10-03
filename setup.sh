@@ -28,6 +28,10 @@ ln -sf $CURRENT_DIR/vimrc $HOME/.sshrc.d/.vimrc
 ln -sf $CURRENT_DIR/tmux.conf $HOME/.sshrc.d/.tmux.conf
 
 
+# Tmux
+sudo apt install xsel
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 # caps2esc
 sudo apt install libevdev-dev libudev-dev -y
 git clone git@github.com:oblitum/caps2esc.git
