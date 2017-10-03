@@ -114,10 +114,10 @@ set termguicolors
 " colorscheme solarized8_light_flat
 " colorscheme one
 " colorscheme anderson
-colorscheme gruvbox
-set background=light
+" colorscheme gruvbox
+" set background=light
 " let g:gruvbox_contrast_dark="medium"
-let g:gruvbox_contrast_light="medium"
+" let g:gruvbox_contrast_light="medium"
 
 " When calling make, autosave my file
 set autowrite
