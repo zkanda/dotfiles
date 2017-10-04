@@ -33,7 +33,14 @@ sudo apt install xsel
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # caps2esc
-sudo apt install libevdev-dev libudev-dev -y
+
+# Ubuntu
+#sudo apt install libevdev-dev libudev-dev -y
+
+# Fedora
+sudo dnf install @development-tools -y
+sudo dnf install libevdev-devel libudev-devel -y
+
 git clone git@github.com:oblitum/caps2esc.git
 cd caps2esc
 git checkout 5dc8546c20ac7f0feb6ef4a8c4f53187ebef44b4
@@ -42,4 +49,6 @@ sudo mv ./caps2esc /usr/local/bin/caps2esc
 sudo cp ../caps2esc.service /etc/systemd/system/caps2esc.service
 sudo systemctl enable caps2esc
 sudo systemctl start caps2esc
+cd ..
+rm -rf caps2esc/
 
