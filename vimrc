@@ -18,23 +18,18 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
-" Plug 'scrooloose/syntastic'
 Plug 'Shougo/neocomplete.vim'
-
-Plug 'jlanzarotta/bufexplorer'
+Plug 'itchyny/lightline.vim'
+Plug 'jremmen/vim-ripgrep'
+Plug 'w0rp/ale'
+Plug 'tpope/vim-eunuch'
 
 Plug 'haya14busa/incsearch.vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'Chiel92/vim-autoformat'
-Plug 'xuhdev/SingleCompile'
 
+Plug 'Chiel92/vim-autoformat'
 
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-
-Plug 'hashivim/vim-terraform'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
 
 " Auto switch paste mode
 Plug 'ConradIrwin/vim-bracketed-paste'
@@ -44,6 +39,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " Theme
+Plug 'arcticicestudio/nord-vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'tomasr/molokai'
@@ -62,15 +58,6 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 
-" Javascript
-" Plug 'pangloss/vim-javascript'
-" Plug 'mxw/vim-jsx'
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
-
-Plug 'plasticboy/vim-markdown'
-
-" CSS
-" Plug 'hail2u/vim-css3-syntax'
 
 call plug#end()
 
@@ -82,6 +69,7 @@ cmap w!! w !sudo tee > /dev/null %
 let mapleader = ","
 
 set number
+set relativenumber
 set nobackup
 set nowritebackup
 set noswapfile
@@ -92,17 +80,22 @@ set colorcolumn=120
 set splitbelow
 set splitright
 
-" set termguicolors
+set termguicolors
 
-
-" Ctrl-p: Find all git files in directory using FZF
+" FZF
+" Ctrl-p: Find all git files in directory
 nmap <c-p> :GitFiles<CR>
+nmap ; :Buffers<CR>
+nmap <Leader>t :Files<CR>
+nmap <Leader>r :Tags<CR>
 
+let g:nord_comment_brightness = 20
 " syntax enable
-set background=light
+set background=dark
+colorscheme nord
 " colorscheme solarized
 " colorscheme anderson
-colorscheme gruvbox
+" colorscheme gruvbox
 " let g:gruvbox_contrast_light="medium"
 
 
@@ -128,20 +121,6 @@ au BufNewFile,BufRead *.py setlocal et ts=4 sw=4 sts=4 " ab ip import ipdb; ipdb
 let g:PyFlakeOnWrite = 1
 let g:formatter_yapf_style = 'pep8'
 
-" Javascript
-let g:javascript_enable_domhtmlcss = 1
-
-" Syntastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_loc_list_height = 4
-
 " Goyo
 nnoremap <silent> <leader>z :Goyo<cr>
 let g:goyo_width = '80%'
@@ -150,36 +129,6 @@ let g:goyo_width = '80%'
 let g:limelight_conceal_ctermfg = 'gray'
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
-
-" Set GUI Options
-if has("gui_running")
-  if has("gui_gtk2")
-
-    set guifont=Consolas\ Regular\ 12
-  elseif has("gui_macvim")
-    set guifont=Menlo\ Regular:h14
-  endif
-  set guioptions-=Be
-  set guioptions=aAc
-  set lines=50 columns=120
-
-  highlight ColorColumn ctermbg=235 guibg=#EBF1F9
-endif
-
-" Rust
-let g:rustfmt_autosave = 1
-au FileType rust nmap gd <Plug>(rust-def)
-au FileType rust nmap gs <Plug>(rust-def-split)
-au FileType rust nmap gx <Plug>(rust-def-vertical)
-au FileType rust nmap <leader>gd <Plug>(rust-doc)
-
-" YCM
-nnoremap <leader>jd :YcmCompleter GoTo<CR>
-
-" Airline
-let g:airline#extensions#tabline#enabled = 1
-" let g:airline_theme = 'distinguished'
-" let g:airline_theme = 'solarized'
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<c-l>"
@@ -203,6 +152,7 @@ let g:neocomplete#enable_at_startup = 1
 
 autocmd CompleteDone * pclose
 
-" SingleCompile
-nmap <F9> :SCCompile<cr>
-nmap <F10> :SCCompileRun<cr>
+" Lightline
+let g:lightline = {
+      \ 'colorscheme': 'nord',
+      \ }
