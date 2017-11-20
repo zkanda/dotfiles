@@ -34,7 +34,7 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'w0rp/ale'
 Plug 'sbdchd/neoformat'
 Plug 'junegunn/vim-peekaboo'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug '/home/linuxbrew/.linuxbrew/opt/fzf/'
 Plug 'junegunn/fzf.vim'
 
 " Python
@@ -44,17 +44,13 @@ Plug 'zchee/deoplete-jedi'
 Plug 'fatih/vim-go'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 
-" Markdown
-Plug 'plasticboy/vim-markdown'
-
-Plug 'hashivim/vim-hashicorp-tools'
-
 
 " THEMES
 Plug 'lifepillar/vim-solarized8'
 Plug 'rakr/vim-one'
 Plug 'tlhr/anderson.vim'
 Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 
@@ -65,8 +61,8 @@ set relativenumber
 set showcmd
 set ts=4 sts=4 sw=4 expandtab
 
-autocmd InsertEnter * :set norelativenumber
-autocmd InsertLeave * :set relativenumber 
+" autocmd InsertEnter * :set norelativenumber
+" autocmd InsertLeave * :set relativenumber 
 
 let mapleader=","
 
@@ -114,8 +110,8 @@ set termguicolors
 " colorscheme solarized8_light_flat
 " colorscheme one
 " colorscheme anderson
-" colorscheme gruvbox
-" set background=light
+colorscheme gruvbox
+set background=dark
 " let g:gruvbox_contrast_dark="medium"
 " let g:gruvbox_contrast_light="medium"
 
@@ -123,9 +119,9 @@ set termguicolors
 set autowrite
 
 " Shortcut for navigating quickfix
-map <C-n> :cnext<CR>
-map <C-m> :cprevious<CR>
-nnoremap <leader>a :cclose<CR>
+" map <C-n> :cnext<CR>
+" map <C-m> :cprevious<CR>
+" nnoremap <leader>a :cclose<CR>
 
 " Disable preview
 set completeopt-=preview
@@ -173,13 +169,24 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
-" hashivim
-let g:terraform_align=1
-autocmd FileType terraform setlocal commentstring=#%s
-
 " Nerdtree
 map <C-k><C-b> :NERDTreeToggle<CR>
 
 
 " Ctrl-p: Find all git files in directory using FZF
 nmap <c-p> :Files<CR>
+" FZF
+" Ctrl-p: Find all git files in directory
+nmap <c-p> :GitFiles<CR>
+nmap ; :Buffers<CR>
+nmap <Leader>t :Files<CR>
+nmap <Leader>r :Tags<CR>
+
+" Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
