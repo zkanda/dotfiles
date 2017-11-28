@@ -13,23 +13,24 @@ Plug 'tpope/vim-sensible'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+" Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+Plug '/home/linuxbrew/.linuxbrew/opt/fzf/'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Shougo/neocomplete.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'jremmen/vim-ripgrep'
 Plug 'w0rp/ale'
 Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-sleuth'
 
 Plug 'haya14busa/incsearch.vim'
 
 Plug 'Chiel92/vim-autoformat'
 
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
+" Plug 'junegunn/limelight.vim'
 
 " Auto switch paste mode
 Plug 'ConradIrwin/vim-bracketed-paste'
@@ -75,6 +76,7 @@ set nowritebackup
 set noswapfile
 set ts=2 sts=2 sw=2 expandtab
 set colorcolumn=120
+set fileencoding=utf-8
 
 " When opening new split, make the default behavior like a modern text editor
 set splitbelow
@@ -89,11 +91,24 @@ nmap ; :Buffers<CR>
 nmap <Leader>t :Files<CR>
 nmap <Leader>r :Tags<CR>
 
+" Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+" Move between open buffers.
+" nmap <C-n> :bnext<CR>
+" nmap <C-p> :bprev<CR>
+
+
 let g:nord_comment_brightness = 20
 " syntax enable
-set background=dark
-colorscheme nord
-" colorscheme solarized
+set background=light
+" colorscheme nord
+colorscheme solarized
 " colorscheme anderson
 " colorscheme gruvbox
 " let g:gruvbox_contrast_light="medium"
@@ -126,9 +141,9 @@ nnoremap <silent> <leader>z :Goyo<cr>
 let g:goyo_width = '80%'
 
 " Limelight
-let g:limelight_conceal_ctermfg = 'gray'
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
+" let g:limelight_conceal_ctermfg = 'gray'
+" autocmd! User GoyoEnter Limelight
+" autocmd! User GoyoLeave Limelight!
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<c-l>"

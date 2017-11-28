@@ -25,7 +25,6 @@ Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'haya14busa/incsearch.vim'
 Plug 'easymotion/vim-easymotion'
-Plug 'jlanzarotta/bufexplorer'
 Plug 'scrooloose/nerdtree'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -107,11 +106,11 @@ set splitright
 set termguicolors
 
 " COLORSCHEME
-" colorscheme solarized8_light_flat
+colorscheme solarized8_light_flat
 " colorscheme one
 " colorscheme anderson
-colorscheme gruvbox
-set background=dark
+" colorscheme gruvbox
+" set background=dark
 " let g:gruvbox_contrast_dark="medium"
 " let g:gruvbox_contrast_light="medium"
 

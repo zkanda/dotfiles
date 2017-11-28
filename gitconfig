@@ -5,7 +5,7 @@
 [push]
 	default = current
 [core]
-	editor = nvim
+	editor = vim
 	excludesfile = ~/.gitignore_global
 [color]
 	ui = auto
