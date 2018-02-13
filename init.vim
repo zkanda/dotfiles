@@ -20,6 +20,7 @@ endif
 
 call plug#begin()
 
+Plug 'plan9-for-vimspace/acme-colors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
@@ -36,6 +37,8 @@ Plug 'junegunn/vim-peekaboo'
 Plug '/home/linuxbrew/.linuxbrew/opt/fzf/'
 Plug 'junegunn/fzf.vim'
 
+Plug 'sheerun/vim-polyglot'
+
 " Python
 Plug 'zchee/deoplete-jedi'
 
@@ -43,13 +46,15 @@ Plug 'zchee/deoplete-jedi'
 Plug 'fatih/vim-go'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 
+" Rust
+Plug 'sebastianmarkow/deoplete-rust'
 
 " THEMES
-Plug 'lifepillar/vim-solarized8'
-Plug 'rakr/vim-one'
-Plug 'tlhr/anderson.vim'
-Plug 'morhetz/gruvbox'
-Plug 'arcticicestudio/nord-vim'
+" Plug 'lifepillar/vim-solarized8'
+" Plug 'rakr/vim-one'
+" Plug 'tlhr/anderson.vim'
+" Plug 'morhetz/gruvbox'
+" Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 
@@ -106,10 +111,11 @@ set splitright
 set termguicolors
 
 " COLORSCHEME
-colorscheme solarized8_light_flat
+" colorscheme solarized8_dark_flat
 " colorscheme one
 " colorscheme anderson
 " colorscheme gruvbox
+colorscheme acme
 " set background=dark
 " let g:gruvbox_contrast_dark="medium"
 " let g:gruvbox_contrast_light="medium"
@@ -151,6 +157,7 @@ autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
+set completeopt+=noselect
 
 " Incsearch
 map /  <Plug>(incsearch-forward)

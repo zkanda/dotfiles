@@ -13,3 +13,5 @@
 	summary = true
 [alias]
 	uncommit = reset HEAD^
+	amend = commit -s --amend
+	c = commit -s
