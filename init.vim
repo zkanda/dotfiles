@@ -35,6 +35,7 @@ Plug 'w0rp/ale'
 Plug 'sbdchd/neoformat'
 Plug 'junegunn/vim-peekaboo'
 Plug '/home/linuxbrew/.linuxbrew/opt/fzf/'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 Plug 'sheerun/vim-polyglot'
