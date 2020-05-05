@@ -7,10 +7,10 @@ set nocompatible
 syntax enable
 filetype plugin on
 
-
 " Reload .vimrc when saving
 autocmd! bufwritepost init.vim nested source %
 
+let g:os = substitute(system('uname'), '\n', '', '')
 
 call plug#begin()
 Plug 'tpope/vim-sensible'
@@ -21,10 +21,13 @@ Plug 'jiangmiao/auto-pairs'
 
 Plug 'govim/govim'
 
-Plug '/usr/local/opt/fzf'
+if g:os == "Darwin"
+    Plug '/usr/local/opt/fzf'
+elseif g:os == "Linux"
+    Plug '/home/linuxbrew/.linuxbrew/opt/fzf'
+endif
 Plug 'junegunn/fzf.vim'
 
-Plug 'gilgigilgil/anderson.vim'
 Plug 'lifepillar/vim-gruvbox8'
 
 call plug#end()
@@ -35,9 +38,6 @@ set number
 set relativenumber
 set showcmd
 set ts=4 sts=4 sw=4 expandtab
-
-" autocmd InsertEnter * :set norelativenumber
-" autocmd InsertLeave * :set relativenumber 
 
 let mapleader=","
 set backspace=indent,eol,start
@@ -85,10 +85,7 @@ set splitright
 " COLORSCHEME
 " set background=dark
 set background=light
-" colorscheme anderson
 colorscheme gruvbox8
-" let g:gruvbox_contrast_dark="medium"
-" let g:gruvbox_contrast_light="medium"
 
 " When calling make, autosave my file
 set autowrite
@@ -104,46 +101,8 @@ set completeopt-=preview
 " Markdown
 au BufNewFile,BufRead *.md setlocal noet ts=4 sw=4 sts=4
 
-" run :GoBuild or :GoTestCompile based on the go file
-function! s:build_go_files()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    call go#cmd#Test(0, 1)
-  elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Build(0)
-  endif
-endfunction
-
-autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-
-autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
-
-
-
-" Incsearch
-" map /  <Plug>(incsearch-forward)
-" map ?  <Plug>(incsearch-backward)
-" map g/ <Plug>(incsearch-stay)
-
-
-" incsearch
-" set hlsearch
-" let g:incsearch#auto_nohlsearch = 1
-" map n  <Plug>(incsearch-nohl-n)
-" map N  <Plug>(incsearch-nohl-N)
-" map *  <Plug>(incsearch-nohl-*)
-" map #  <Plug>(incsearch-nohl-#)
-" map g* <Plug>(incsearch-nohl-g*)
-" map g# <Plug>(incsearch-nohl-g#)
-
-" Nerdtree
-" map <C-k><C-b> :NERDTreeToggle<CR>
-
-
-" Ctrl-p: Find all git files in directory using FZF
-nmap <c-p> :Files<CR>
-" FZF
-" Ctrl-p: Find all git files in directory
+" fzf
+" ctrl-p: Find all git files in directory
 nmap <c-p> :GitFiles<CR>
 nmap ; :Buffers<CR>
 nmap <Leader>t :Files<CR>
@@ -160,11 +119,3 @@ command! -bang -nargs=* Rg
 
 au BufRead,BufNewFile *.md setlocal textwidth=80
 
-
-" autocmd BufWritePre *.go :CocCommand editor.action.organizeImport
-
-" Remap keys for gotos
-" nmap <silent> gd <Plug>(coc-definition)
-" nmap <silent> gy <Plug>(coc-type-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
-" nmap <silent> gr <Plug>(coc-references)
