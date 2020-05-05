@@ -1,17 +1,17 @@
-#!/bin/bash
-CURRENT_DIR=$(realpath .)
+#!/usr/bin/env bash
 
+CURRENT_DIR=$(realpath .)
 echo $CURRENT_DIR
 
-# Git
+# git
 ln -sf $CURRENT_DIR/gitconfig $HOME/.gitconfig
 ln -sf $CURRENT_DIR/gitignore_global $HOME/.gitignore_global
 
-# Tmux
+# tmux
 ln -sf $CURRENT_DIR/tmux.conf $HOME/.tmux.conf
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-# Vim
+# vim
 ln -sf $CURRENT_DIR/vimrc $HOME/.vimrc
 
 # minimal bash config when connecting to server via ssh

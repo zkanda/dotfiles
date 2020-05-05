@@ -9,4 +9,5 @@ I use [Prezto](https://github.com/sorin-ionescu/prezto)
 
 Installation:
 
-* Just run *setup.sh*
+* Run *setup.sh*
+
