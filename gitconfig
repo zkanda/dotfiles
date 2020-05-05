@@ -1,7 +1,6 @@
 [user]
 	email = hi@zkanda.io
-	name = zkanda
-	signingkey = A9429161
+	name = Zakatell Kanda
 [push]
 	default = current
 [core]
@@ -15,3 +14,5 @@
 	uncommit = reset HEAD^
 	amend = commit -s --amend
 	c = commit -s
+[url "git@github.com:"]
+	insteadOf = https://github.com/
