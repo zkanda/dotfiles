@@ -15,8 +15,14 @@ export GOPATH=~/code/go
 
 gitcmd() {
     pr_branch=$(git rev-parse --abbrev-ref HEAD)
-    git checkout master
-    git pull -p
-    git branch -D $pr_branch
+    echo "current branch: $pr_branch"
+    if [[ $pr_branch == "master" ]]; then
+        echo "you are already in master branch"
+    else
+        echo "deleting $pr_branch"
+        git checkout master
+        git pull -p
+        git branch -D $pr_branch
+    fi
 }
 
