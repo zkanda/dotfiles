@@ -18,8 +18,10 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
+Plug 'gilgigilgil/anderson.vim'
 
-Plug 'govim/govim'
+
+" Plug 'govim/govim'
 
 if g:os == "Darwin"
     Plug '/usr/local/opt/fzf'
@@ -28,6 +30,7 @@ elseif g:os == "Linux"
 endif
 Plug 'junegunn/fzf.vim'
 
+Plug 'gilgigilgil/anderson.vim'
 Plug 'lifepillar/vim-gruvbox8'
 
 call plug#end()
@@ -84,8 +87,9 @@ set splitright
 
 " COLORSCHEME
 " set background=dark
-set background=light
-colorscheme gruvbox8
+" set background=light
+" colorscheme gruvbox8
+colorscheme anderson
 
 " When calling make, autosave my file
 set autowrite

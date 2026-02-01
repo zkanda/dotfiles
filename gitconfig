@@ -4,7 +4,7 @@
 [push]
 	default = current
 [core]
-	editor = vim
+	#editor = vim
 	excludesfile = ~/.gitignore_global
 [color]
 	ui = auto
